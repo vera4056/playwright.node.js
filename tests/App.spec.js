@@ -1,6 +1,6 @@
 
 const { test, expect } = require("@playwright/test");
-const user = require("../user.js");
+const user = require("./user.js");
 
 test.describe('positive test', () => {
 test("successful authorizition", async ({ page }) => {
@@ -11,7 +11,7 @@ test("successful authorizition", async ({ page }) => {
   await page.getByPlaceholder('Пароль').click();
   await page.getByPlaceholder('Пароль').fill(user.password);
   await page.getByTestId('login-submit-btn').click();
-  const titleText = await page.textContent('h2');
+  const titleText = await page.textContent('h2'); 
   await expect(page.getByRole('heading', {name: 'Мои курсы и профессии' })).toHaveText(titleText);
   await page.screenshot({ path: 'screenshots/my-courses-page2.png'/*, fullPage: true*/});
   });
